@@ -1,6 +1,6 @@
 "use client";
 
-import HeaderButton from "@/components/header-button";
+import HeaderButton from "@/components/ui/header-button";
 import { useState } from "react";
 
 const Header = () => {

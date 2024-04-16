@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
+import HeaderButtonText from "./header-button-text";
 
 interface HeaderButtonProps {
     isActive: boolean;
     setIsActive: (isActive: boolean) => void;
 }
+
 
 const HeaderButton: React.FC<HeaderButtonProps> = ({
     isActive,
@@ -19,15 +21,11 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({
                 animate={{top: isActive ? "-100%" : "0"}} 
                 transition={{duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
             >
-                <div className="w-full h-full bg-green-400 text-black flex items-center justify-center uppercase">
-                    <p>
-                        Menu
-                    </p>
+                <div className="w-full h-full bg-green-400 text-black uppercase">
+                    <HeaderButtonText label="Menu" />
                 </div>
-                <div className="w-full h-full bg-black text-white flex items-center uppercase justify-center absolute top-full">
-                    <p>
-                        Close
-                    </p>
+                <div className="w-full h-full bg-black text-white uppercase absolute top-full">
+                    <HeaderButtonText label="Close" />
                 </div>
             </motion.div>
         </div>
