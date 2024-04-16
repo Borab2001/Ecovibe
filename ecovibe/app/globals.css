@@ -10,4 +10,7 @@
   .preserve-3d {
     transform-style: preserve-3d;
   }
+  .header-full {
+    height: calc(100vh - 32px);
+  }
 }
