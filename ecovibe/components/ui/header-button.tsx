@@ -21,10 +21,10 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({
                 animate={{top: isActive ? "-100%" : "0"}} 
                 transition={{duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
             >
-                <div className="w-full h-full bg-green-400 text-black uppercase">
+                <div className="w-full h-full bg-green-400 text-black uppercase group">
                     <HeaderButtonText label="Menu" />
                 </div>
-                <div className="w-full h-full bg-black text-white uppercase absolute top-full">
+                <div className="w-full h-full bg-black text-white uppercase absolute top-full group">
                     <HeaderButtonText label="Close" />
                 </div>
             </motion.div>
