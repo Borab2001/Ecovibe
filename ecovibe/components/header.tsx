@@ -4,26 +4,27 @@ import HeaderButton from "@/components/ui/header-button";
 import Nav from "@/components/ui/header-nav";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
-const variants = {
-    open: {
-        width: 480,
-        height: 650,
-        top: "-8px",
-        right: "-8px",
-        transition: {duration: 0.7, ease: [0.76, 0, 0.24, 1]}
-    },
-    closed: {
-        width: 100,
-        height: 40,
-        top: "0px",
-        right: "0px",
-        transition: {duration: 0.7, ease: [0.76, 0, 0.24, 1]}
-    }
-}
 
 const Header = () => {
+    
+    const variants = {
+        open: {
+            width: 480,
+            height: 650,
+            top: "-8px",
+            right: "-8px",
+            transition: {duration: 0.7, ease: [0.76, 0, 0.24, 1]}
+        },
+        closed: {
+            width: 100,
+            height: 40,
+            top: "0px",
+            right: "0px",
+            transition: {duration: 0.7, delay: 0.2, ease: [0.76, 0, 0.24, 1]}
+        }
+    }
 
     const [isActive, setIsActive] = useState(false);
 
@@ -35,7 +36,9 @@ const Header = () => {
                 animate={isActive ? "open" : "closed"}
                 initial="closed"
             >
-                <Nav />
+                <AnimatePresence>
+                    {isActive && <Nav />}
+                </AnimatePresence>
             </motion.div>
             <HeaderButton isActive={isActive} setIsActive={setIsActive} />
         </header>

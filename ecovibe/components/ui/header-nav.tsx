@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { motion } from "framer-motion";
+
 const Nav = () => {
     
     const links = [
@@ -25,13 +27,36 @@ const Nav = () => {
         },
     ];
 
+    const animated = {
+        initial: {
+            opacity: 0
+        },
+        enter: (index: number) => ({
+            opacity: 1,
+            transition: {delay: 0.5 + (index * 0.1)}
+        }),
+        exit: {
+            opacity: 0
+        }
+    }
+
     return (
         <nav className="h-full pt-24 px-10 pb-12 box-border">
             <div className="flex flex-col gap-4">
                 {links.map((link, index) => (
-                    <Link key={index} href={link.url} className="text-4xl text-black hover:text-black">
-                        {link.name}
-                    </Link>
+                    <motion.div 
+                        key={index}
+                        className="text-4xl text-black hover:text-black"
+                        custom={index}
+                        variants={animated}
+                        animate="enter"
+                        exit="exit"
+                        initial="initial"
+                    >
+                        <Link href={link.url}>
+                            {link.name}
+                        </Link>
+                    </motion.div>
                 ))}
             </div>
         </nav>
