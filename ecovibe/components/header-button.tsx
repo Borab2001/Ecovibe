@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface HeaderButtonProps {
     isActive: boolean;
     setIsActive: (isActive: boolean) => void;
@@ -12,7 +14,7 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({
             onClick={() => {setIsActive(!isActive)}} 
             className="h-10 w-24 bg-green-500 rounded-3xl cursor-pointer relative overflow-hidden"
         >
-            <div className="">
+            <motion.div animate={{top: isActive ? "-100%" : "0"}} className="relative w-full h-full">
                 <div className="w-full h-full bg-green-400 text-black flex items-center justify-center uppercase">
                     <p>
                         Menu
@@ -23,7 +25,7 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({
                         Close
                     </p>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 }
