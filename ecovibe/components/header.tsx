@@ -1,6 +1,7 @@
 "use client";
 
 import HeaderButton from "@/components/ui/header-button";
+import Nav from "@/components/ui/header-nav";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -34,7 +35,7 @@ const Header = () => {
                 animate={isActive ? "open" : "closed"}
                 initial="closed"
             >
-
+                <Nav />
             </motion.div>
             <HeaderButton isActive={isActive} setIsActive={setIsActive} />
         </header>
