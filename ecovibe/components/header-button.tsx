@@ -14,7 +14,11 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({
             onClick={() => {setIsActive(!isActive)}} 
             className="h-10 w-24 bg-green-500 rounded-3xl cursor-pointer relative overflow-hidden"
         >
-            <motion.div animate={{top: isActive ? "-100%" : "0"}} className="relative w-full h-full">
+            <motion.div 
+                className="relative w-full h-full"
+                animate={{top: isActive ? "-100%" : "0"}} 
+                transition={{duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
+            >
                 <div className="w-full h-full bg-green-400 text-black flex items-center justify-center uppercase">
                     <p>
                         Menu
