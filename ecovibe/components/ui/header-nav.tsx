@@ -29,11 +29,19 @@ const Nav = () => {
 
     const animated = {
         initial: {
-            opacity: 0
+            opacity: 0,
+            translateY: 80,
+            translateX: -20
         },
         enter: (index: number) => ({
             opacity: 1,
-            transition: {delay: 0.5 + (index * 0.1)}
+            translateY: 0,
+            translateX: 0,
+            transition: {
+                duration: 0.65,
+                delay: 0.5 + (index * 0.1),
+                ease: [0.215, 0.61, 0.355, 1]
+            }
         }),
         exit: {
             opacity: 0
@@ -44,19 +52,23 @@ const Nav = () => {
         <nav className="h-full pt-24 px-10 pb-12 box-border">
             <div className="flex flex-col gap-4">
                 {links.map((link, index) => (
-                    <motion.div 
+                    <div
                         key={index}
-                        className="text-4xl text-black hover:text-black"
-                        custom={index}
-                        variants={animated}
-                        animate="enter"
-                        exit="exit"
-                        initial="initial"
                     >
-                        <Link href={link.url}>
-                            {link.name}
-                        </Link>
-                    </motion.div>
+                        <motion.div 
+                            
+                            className="text-4xl text-black hover:text-black"
+                            custom={index}
+                            variants={animated}
+                            animate="enter"
+                            exit="exit"
+                            initial="initial"
+                        >
+                            <Link href={link.url}>
+                                {link.name}
+                            </Link>
+                        </motion.div>
+                    </div>
                 ))}
             </div>
         </nav>
