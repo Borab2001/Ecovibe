@@ -18,7 +18,7 @@ const Header = () => {
             transition: {duration: 0.7, ease: [0.76, 0, 0.24, 1]}
         },
         closed: {
-            width: 100,
+            width: 96,
             height: 40,
             top: "0px",
             right: "0px",
