@@ -3,16 +3,21 @@
 import HeaderButton from "@/components/ui/header-button";
 import Nav from "@/components/ui/header-nav";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 
 const Header = () => {
+
+    const [size, setSize] = useState({
+        width: window.innerWidth > 480 ? 464 : 'calc(100vw - 16px)',
+        height: window.innerWidth > 480 ? 650 : 650
+    });
     
     const variants = {
         open: {
-            width: 480,
-            height: 650,
+            width: size.width,
+            height: size.height,
             top: "-8px",
             right: "-8px",
             transition: {duration: 0.7, ease: [0.76, 0, 0.24, 1]}
@@ -26,12 +31,26 @@ const Header = () => {
         }
     }
 
+    const handleResize = () => {
+        setSize({
+            width: window.innerWidth > 480 ? 464 : 'calc(100vw - 16px)',
+            height: window.innerWidth > 480 ? 650 : 650
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     const [isActive, setIsActive] = useState(false);
 
     return (
         <header className="fixed right-4 top-4">
             <motion.div 
-                className="w-[480px] header-full bg-green-400 relative rounded-3xl"
+                className="bg-green-400 relative rounded-3xl"
                 variants={variants}
                 animate={isActive ? "open" : "closed"}
                 initial="closed"
