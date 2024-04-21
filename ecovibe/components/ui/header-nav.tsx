@@ -101,7 +101,9 @@ const Nav = () => {
                         exit="exit"
                         initial="initial"
                     >
-                        <Link href={link.url}>
+                        <Link href={link.url} 
+                            className="relative block transition-all duration-300 ease-[cubic-bezier(0.76,0,0.24,1)] hover:translate-x-8"
+                        >
                             {link.name}
                         </Link>
                     </motion.div>
@@ -119,7 +121,9 @@ const Nav = () => {
                         exit="exit"
                         initial="initial"
                     >
-                        <Link href={social.url}>
+                        <Link 
+                            href={social.url}
+                        >
                             {social.name}
                         </Link>
                     </motion.div>
