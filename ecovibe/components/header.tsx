@@ -9,23 +9,9 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const Header = () => {
 
-    const getDefaultSize = () => {
-        if (typeof window !== "undefined") {
-            return {
-                width: window.innerWidth > 480 ? 464 : 'calc(100vw - 16px)',
-                height: window.innerWidth > 480 ? 650 : 650
-            };
-        }
-        // Return default size if window is not defined (e.g., during SSR)
-        return {
-            width: 'calc(100vw - 16px)',
-            height: 650
-        };
-    };
-
-    const [size, setSize] = useState({
-        width: window.innerWidth > 480 ? 464 : 'calc(100vw - 16px)',
-        height: window.innerWidth > 480 ? 650 : 650
+    const [size, setSize] = useState<{width: number | string, height: number}>({
+        width: 464,
+        height: 650,
     });
     
     const variants = {
@@ -46,10 +32,16 @@ const Header = () => {
     }
 
     const handleResize = () => {
-        setSize(getDefaultSize());
+        if (typeof window !== 'undefined') {
+            setSize({
+                width: window.innerWidth > 480 ? 464 : 'calc(100vw - 16px)',
+                height: 650,
+            });
+        }
     };
 
     useEffect(() => {
+        handleResize(); // Set the size initially
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
